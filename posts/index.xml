@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on (λ) Lambda Prime</title>
+    <link>https://emlautarom1.github.io/posts/</link>
+    <description>Recent content in Posts on (λ) Lambda Prime</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Mar 2020 19:20:58 -0300</lastBuildDate>
+    
+	<atom:link href="https://emlautarom1.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Set Up Windows for C development</title>
+      <link>https://emlautarom1.github.io/posts/set-up-windows-for-c-development/</link>
+      <pubDate>Wed, 11 Mar 2020 19:20:58 -0300</pubDate>
+      
+      <guid>https://emlautarom1.github.io/posts/set-up-windows-for-c-development/</guid>
+      <description>First year in college, got your first assignment in C, all your teachers use Linux and you don&amp;rsquo;t know what to do? Then you should keep on reading!</description>
+    </item>
+    
+  </channel>
+</rss>

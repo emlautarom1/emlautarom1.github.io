@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Set Up Windows for C development &middot; (λ) Lambda Prime</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		<link rel="stylesheet" href="/custom.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="(λ) Lambda Prime" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">(λ) Lambda Prime</h2>
+				</a>
+				<ul>
+    
+    
+        <li>
+            <a href="/about/">
+                
+                <span>About</span>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="/posts/">
+                
+                <span>Posts</span>
+                
+            </a>
+        </li>
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        Lautaro Emanuel
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-03-11 19:20:58 -0300 -03">March 11, 2020</time>
+</div>
+		<h1 class="post-title">Set Up Windows for C development</h1>
+<div class="post-line"></div>
+
+		
+
+		<h2 id="tldr">TL;DR</h2>
+<blockquote>
+<ul>
+<li>Install <code>chocolatey</code> following the instructions from <a href="https://chocolatey.org/install">here</a></li>
+<li>Open a terminal and run:</li>
+</ul>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">PS&gt; choco install msys2
+<span style="color:#75715e"># Wait for installation to finish</span>
+PS&gt; pacman -Syuu
+PS&gt; pacman -S base-devel mingw-w64-x86_64-toolchain make
+<span style="color:#75715e"># Accept everything by pressing Enter</span>
+<span style="color:#75715e"># Wait for installation to finish</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Compile your <code>.c</code> file running <code>gcc &lt;your-file&gt;.c</code> and run it with <code>.\a.out</code></li>
+</ul>
+</blockquote>
+<hr>
+<p>Compiling and running <strong>C</strong> is not one of the easiest tasks to do on Windows, specially if you&rsquo;re a beginner since the whole toolchain (compiler, debugger and build tools) is missing by default.</p>
+<p>Worry not, is very easy to get everything working, and we&rsquo;ll also install some extra tools that are ubiquitous in the <strong>C</strong> community.</p>
+<h2 id="some-words-about-c">Some words about C</h2>
+<blockquote>
+<p><strong>C</strong>, first appeared on 1972 - 48 years ago - is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, while a static type system prevents unintended operations.</p>
+<p>— <a href="https://en.wikipedia.org/wiki/C_(programming_language)">Wikipedia</a></p>
+</blockquote>
+<p><strong>C</strong> as a language doesn&rsquo;t come with a package manager or build tool as you may be used to like in other languages (be it <code>gradle</code> or <code>maven</code> for <strong>Java</strong>, <code>cargo</code> for <strong>Rust</strong> or <code>cabal</code> for <strong>Haskell</strong>), but instead it relies only on the compiler.</p>
+<p>There are multiple <strong>C</strong> compilers out there, like <a href="https://docs.microsoft.com/en-us/cpp/build/reference/compiling-a-c-cpp-program">MSVC</a> by <strong>Microsoft</strong>, <a href="https://clang.llvm.org/">Clang</a> and the most popular one, <a href="https://gcc.gnu.org/">GNU GCC</a>, so for the most part you&rsquo;ll want to stick with <strong>GCC</strong>.</p>
+<h2 id="getting-gcc">Getting <strong>GCC</strong></h2>
+<p><strong>GCC</strong> is a compiler that comes from the <strong>Linux</strong> world, and like most of these tools, there are <em>&ldquo;ports&rdquo;</em> or <em>&ldquo;compatibility layers&rdquo;</em> to make them work on a non-UNIX systems like Windows. We&rsquo;ll use a nice tool called <a href="https://www.msys2.org/">MSYS2</a> in order to get <strong>GCC</strong> and it&rsquo;s friends.</p>
+<h2 id="introducing-chocolatey">Introducing <code>chocolatey</code></h2>
+<p>Pretty much all software in Windows requieres to be installed through an installer before you can use it. You visit the author&rsquo;s home page, download the installer, run it and get a nice shortcut on your Desktop or Start Menu.</p>
+<p>On Linux, the software usually is stored in repositories: think of it like big folders on the Internet in which all programs are stored. You download the software from those repositories and <em>bam</em>, you are ready to go.</p>
+<p>This means that most software installations on Linux are pretty much the same:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">sudo apt get &lt;name of the software&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>Updates are done by the same way. <strong>As you may expect</strong>, this has drawbacks, like, <em>what if the software is not in a repository you know?</em>, or <em>the repository version is very old</em>, and so forth.</p>
+<p>Windows does not come with a native package manager, but there&rsquo;s a community solution that goes by the name <code>chocolatey</code> that fills this gap.</p>
+<p>Chocolatey&rsquo;s installation is done through <strong>PowerShell</strong> and is mostly automatic:</p>
+<ul>
+<li>Visit the <a href="https://chocolatey.org/install">official site</a></li>
+<li>Go to <strong>Start Menu</strong> -&gt; <strong>Windows PowerShell</strong> -&gt; <strong>Run as Admin</strong></li>
+<li>Paste the command shown in the installation page and let it work</li>
+<li>Type <code>choco -?</code> in order to verify the installation</li>
+</ul>
+<h2 id="installing-msys2">Installing MSYS2</h2>
+<p>Installing packages through <code>chocolatey</code> is dead simple:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">PS&gt; choco install &lt;name of the package&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>Then, we&rsquo;ll install <strong>MSYS2</strong> by running:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">PS&gt; choco install msys2
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>Let it run.</strong> It may take a while to finish.
+Once it&rsquo;s done close your terminal — <strong>PowerShell</strong> — and open one up again.
+In order to make sure everything works properly, run the following command:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">PS&gt; pacman --version
+
+ .--.                  Pacman v5.2.1 - libalpm v12.0.1
+/ _.-&#39; .-.  .-.  .-.   Copyright (C) 2006-2019 Pacman Development Team
+\  &#39;-. &#39;-&#39;  &#39;-&#39;  &#39;-&#39;   Copyright (C) 2002-2006 Judd Vinet
+ &#39;--&#39;
+                       This program may be freely redistributed under
+                       the terms of the GNU General Public License.
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>Isn&rsquo;t that a beautiful version message?</p>
+</blockquote>
+<h2 id="using-pacman">Using <code>pacman</code></h2>
+<p>So, by now we got <code>choclatey</code> installed and we used it to install <code>msys2</code>. Now, what&rsquo;s <code>pacman</code> you may ask. No, it has nothing to do with <em>that</em> <a href="https://en.wikipedia.org/wiki/Pac-Man">Pac-Man</a>.</p>
+<blockquote>
+<p>The <code>pacman</code> package manager is one of the major distinguishing features of <strong>Arch Linux</strong>. It combines a simple binary package format with an easy-to-use build system. The goal of <code>pacman</code> is to make it possible to easily manage packages, whether they are from the official repositories or the user&rsquo;s own builds.</p>
+<p>— <a href="https://wiki.archlinux.org/index.php/pacman">Arch Linux Wiki</a></p>
+</blockquote>
+<h3 id="wait-wait-another-package-manager"><strong>Wait, wait, another package manager?!</strong></h3>
+<p>Yes, sadly this is necessary. You see, <code>chocolatey</code> works for native <strong>Windows</strong> applications — you could even install <a href="https://discordapp.com/">Discord</a> through it — while <code>pacman</code> allows us to install <strong>Linux-like</strong> packages: packages like <strong>GCC</strong>.</p>
+<p>For the most part you don&rsquo;t need to know or do much with <code>pacman</code>, but if you want to dig deeper feel free to check the official <a href="https://wiki.archlinux.org/index.php/pacman">wiki</a>.</p>
+<h2 id="installing-development-tools">Installing development tools</h2>
+<p>We&rsquo;ll use <code>pacman</code> in order to get a lot of really useful development tools like <code>gcc</code> — the <strong>GNU GCC</strong> compiler — <code>gdb</code> — the <strong>GNU Debugger</strong> — <code>grep</code>, <code>awk</code>, <code>make</code>, <code>pkg-config</code> and more.</p>
+<blockquote>
+<p>If you don&rsquo;t know what those tools are, don&rsquo;t worry. You&rsquo;ll eventually find them in some <strong>Stack Overflow</strong> post that asks you to run some command.</p>
+</blockquote>
+<p>First of all, make sure <code>pacman</code> is up to date by running the following command:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">pacman -Syuu
+</code></pre></td></tr></table>
+</div>
+</div><p>In order to install the development tools, again, this is pretty straight-forward:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">pacman -S base-devel
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>You&rsquo;ll see listed all the tools that will be installed. Press Enter to install all of them.</p>
+</blockquote>
+<p>Sadly, this is not enough. If you try to run <code>gcc</code> from the command line you&rsquo;ll probably get an error. We need to install some more packages:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">pacman -S mingw-w64-x86_64-toolchain
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>Again, press Enter to accept the installation and let it run.</p>
+</blockquote>
+<p>This will install <code>gcc</code> and friends for 64-bit machines, and since you most likely are running one — as long is not over 10 years old — you don&rsquo;t need anything more.</p>
+<blockquote>
+<p><strong>Note:</strong>
+This will also install the latest <code>python</code> version, but without the <code>pip</code> tool. If you want to use <code>python</code> with <code>pip</code> you can get it by running <code>pacman -S mingw-w64-x86_64-python-pip</code></p>
+</blockquote>
+<p>And you are pretty much done! Check that everything works by running:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">PS&gt; gcc --version
+gcc.exe (Rev2, Built by MSYS2 project) 9.2.0
+Copyright (C) 2019 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">PS&gt; gdb --version
+GNU gdb (GDB) 9.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="adding-make-to-the-mix">Adding <code>make</code> to the mix</h2>
+<blockquote>
+<p><strong>GNU Make</strong> is a tool which controls the generation of executables and other non-source files of a program from the program&rsquo;s source files.
+Make gets its knowledge of how to build your program from a file called the <code>makefile</code>, which lists each of the non-source files and how to compute it from other files. When you write a program, you should write a <code>makefile</code> for it, so that it is possible to use Make to build and install the program.</p>
+<p>— <a href="https://www.gnu.org/software/make/">GNU Make</a></p>
+</blockquote>
+<p>Make is one of the most popular <em>&ldquo;build systems&rdquo;</em> for <strong>C</strong>, and most projects written in <strong>C</strong> use it. The details of <code>make</code> are outside the scope of this post, but we&rsquo;ll install for future usage.</p>
+<p>By now, you should know what&rsquo;s coming:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">pacman -S make
+</code></pre></td></tr></table>
+</div>
+</div><p>Make sure everything is correct:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">PS&gt; make --version
+Built for x86_64-pc-msys
+Copyright (C) 1988-2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="setting-up-a-minimal-editor">Setting up a minimal editor</h2>
+<p>There are <strong>a lot</strong> of <strong>C IDEs</strong> for you to pick:</p>
+<ul>
+<li><a href="https://www.jetbrains.com/clion/">Clion</a></li>
+<li><a href="https://www.bloodshed.net/devcpp.html">Dev-C++</a></li>
+<li><a href="http://www.codeblocks.org/">Code::Blocks</a></li>
+<li><a href="https://netbeans.org/">NetBeans</a></li>
+</ul>
+<p><em>etc&hellip;</em></p>
+<h3 id="but-were-going-bare-metal">But we&rsquo;re going bare metal&hellip;</h3>
+<p>When starting with <strong>C</strong> — actually with <strong>any</strong> programming language — I don&rsquo;t recommend going with an <strong>IDE</strong> since those tools do a lot of stuff under the hood that you as a beginner may be missing, maybe don&rsquo;t understand or can&rsquo;t troubleshoot.</p>
+<blockquote>
+<p>Understand the magic under the hood and then go with an IDE. Never the other way around. I&rsquo;ve done that. Don&rsquo;t you do it too.</p>
+</blockquote>
+<p>Just use a <strong>text editor</strong>. I recommend <a href="https://code.visualstudio.com/">VS Code</a> since it&rsquo;s very popular, easy to use and very customizable. It supports a lot of programming languages and tools by installing <a href="https://marketplace.visualstudio.com/vscode">extensions</a>, and there are a lot of those.</p>
+<p><img src="/screens/vscode-c.png" alt="My VS Code Setup"></p>
+<blockquote>
+<p>I&rsquo;m using the <a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme">One Dark Pro</a> theme with <a href="https://www.jetbrains.com/lp/mono/">JetBrains Mono</a> font.</p>
+</blockquote>
+<p>Create a empty folder, open it in <strong>VS Code</strong>, create a <code>main.c</code> file and write the usual <strong>Hello, World!</strong>. If you get an extension recommendation for <code>C/C++</code>, <strong>install it</strong>. It will provide useful stuff like error highlighting, function and names autocomplete, code snippets — function definitions, main function, etc. —</p>
+<p>If you want to run your code, on the integrated terminal run:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">    PS&gt; gcc main.c          <span style="color:#75715e"># compile your files</span>
+    PS&gt; a.exe               <span style="color:#75715e"># run the executable</span>
+    Hello World!            <span style="color:#75715e"># expected output</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>There you go!</strong> Next time you want to compile and run <strong>C</strong>, you will only need to run <code>gcc</code> from the terminal with your <code>.c</code> file like we just did.</p>
+<blockquote>
+<p>There&rsquo;s a VS Code extension that will automatically compile and run your <strong>C</strong> program. It&rsquo;s also capable of running a lot of other programs from different languages. <a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Check it out!</a></p>
+</blockquote>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/about/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        <footer>
+    <div style="display: flex; justify-content: center;">
+        <a href="https://github.com/emlautarom1/">
+            <img src="/images/github.png" alt="GitHub" width="32" height="32">
+        </a>
+    </div>
+    <span>
+        &copy; <time datetime="2020-03-12 02:36:05.4142894 -0300 -03 m=&#43;0.056500001">2020</time> Lautaro Emanuel.
+        Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+    </span>
+</footer>
+    </body>
+</html>
