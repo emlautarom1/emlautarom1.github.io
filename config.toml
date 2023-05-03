@@ -14,7 +14,7 @@ publishDir = "public"
     weight = 0
 
 [author]
-    name = "Lautaro Emanuel"
+  name = "Lautaro Emanuel"
 
 [params]
   css = ["custom.css"]
