@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "(λ) Lambda Prime"
 theme = 'tale'
 enableEmoji = true
-publishDir = "build"
+publishDir = "public"
 
 [menu]
   [[menu.main]]
