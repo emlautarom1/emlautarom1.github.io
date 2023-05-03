@@ -1,0 +1,24 @@
+baseURL = "https://emlautarom1.github.io/"
+languageCode = "en-us"
+title = "(λ) Lambda Prime"
+theme = 'tale'
+enableEmoji = true
+publishDir = "build"
+
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    title = "About Me"
+    url = "/about/"
+    weight = 0
+
+[author]
+    name = "Lautaro Emanuel"
+
+[params]
+  css = ["custom.css"]
+
+[markup]
+  [markup.highlight]
+    lineNos = true
