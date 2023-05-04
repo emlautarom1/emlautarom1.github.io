@@ -1,3 +1,12 @@
 .highlight > :first-child {
   padding: 1rem 0.5rem;
 }
+
+:root:not(.light) .icon-light {
+  display: none;
+}
+
+:root.light .icon-dark {
+  display: none;
+}
+
