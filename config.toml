@@ -21,4 +21,5 @@ publishDir = "public"
 
 [markup]
   [markup.highlight]
-    lineNos = true
+    lineNos = false
+    style = 'onedark'
