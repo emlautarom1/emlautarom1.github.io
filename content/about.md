@@ -4,25 +4,25 @@ date: 2020-03-11T15:27:41-03:00
 draft: true
 ---
 
-![Missing handsome dude picture](/images/me.jpg)
-&nbsp;
+![profile picture](/images/me.jpg)
 
-**Well, hello there!** My name is is **Lautaro Emanuel** and I'm a software engineering student at [San Luis National University][unsl] in San Luis, Argentina.
+Hello and welcome to my personal site. My name is Lautaro Emanuel and I'm a professional software engineer based in Argentina.
 
-You can contact me by sending an email to emlautarom1@gmail.com. I'm also on [Twitter][twitter] and if you're interested in my projects you can check my [GitHub][GitHub] account.
+During my studies at [San Luis National University](http://www.unsl.edu.ar/)  I worked as a freelancer for several clients all over the world. After finishing my degree, I decided to work full-time in the industry, with a focus on distributed systems, blockchain and functional programming.
 
-## Some projects I've worked on:
+## Projects I've worked on
 
-- **[Proyecto Paraísos](https://github.com/emlautarom1/ProyectoParaisos)**: Mobile/Web PWA for tracking sick trees in my hometown, aggregate collected data and present it in a readable format to the community.
+- [Axo](https://www.axo.trade/): An Order Book based Cardano DEX.
+- [Duckling](https://github.com/facebook/duckling): Language, engine, and tooling for expressing, testing, and evaluating composable language rules on input strings.
+- [VidGif](https://play.google.com/store/apps/details?id=com.migamake.vidgif): Record, edit and share the last 30 seconds of any game or application.
+- [Proyecto Paraísos](https://github.com/emlautarom1/ProyectoParaisos): Track sick trees, aggregate observation records and access a wiki, all in a single PWA.
+- [Chip 8 Emulator](https://github.com/emlautarom1/Chip_8): Chip 8 Virtual Machine implemented in Rust.
+- [Information Theory](https://github.com/emlautarom1/InformationTheory): Compress and protect data with Hamming and Huffman algorithms.
+- [pdp11.jl](https://github.com/emlautarom1/pdp11.jl): PDP-11 simulator written in Julia, ala QEMU.
+- [Billy](https://github.com/emlautarom1/Billy): Split bills fairly among friends.
 
-- **[Chip 8 Emulator](https://github.com/emlautarom1/Chip_8)**: Chip 8 Virtual Machine implemented in Rust.
+## Relevant links
 
-- **[Information Theory](https://github.com/emlautarom1/InformationTheory)**: Cross-platform Desktop App for data Protection and Compression using Hamming's and Huffman's algorithms.
-
-- **[W-Pong](https://github.com/emlautarom1/W_Pong)**: Web based Pong built with JavaScript, CSS and HTML.
-
-- **[Notes FX](https://github.com/emlautarom1/NotesFX)**: JavaFX / SQLite application to store, view, edit and delete personal notes.
-
-[unsl]: http://www.unsl.edu.ar/
-[twitter]: https://twitter.com/emlautarom1/
-[GitHub]: https://github.com/emlautarom1
+- LinkedIn: https://www.linkedin.com/in/lautaro-martin-emanuel/
+- GitHub: https://github.com/emlautarom1
+- Upwork: https://www.upwork.com/freelancers/lautaroemanuel
