@@ -5,7 +5,7 @@ summary: "First year in college, got your first assignment in C, all your teache
 draft: false
 ---
 
-## TL;DR
+> ## TL;DR
 > - Install `chocolatey` following the instructions from [here][chocolatey]
 > - Open a terminal and run:
 > ```bash
@@ -18,9 +18,7 @@ draft: false
 > ```
 > - Compile your `.c` file running `gcc <your-file>.c` and run it with `.\a.out`
 
----
-
-Compiling and running **C** is not one of the easiest tasks to do on Windows, specially if you're a beginner since the whole toolchain (compiler, debugger and build tools) is missing by default. 
+Compiling and running **C** is not one of the easiest tasks to do on Windows, specially if you're a beginner since the whole toolchain (compiler, debugger and build tools) is missing by default.
 
 Worry not, is very easy to get everything working, and we'll also install some extra tools that are ubiquitous in the **C** community.
 
@@ -42,9 +40,9 @@ There are multiple **C** compilers out there, like [MSVC][msvc] by **Microsoft**
 
 Pretty much all software in Windows requieres to be installed through an installer before you can use it. You visit the author's home page, download the installer, run it and get a nice shortcut on your Desktop or Start Menu.
 
-On Linux, the software usually is stored in repositories: think of it like big folders on the Internet in which all programs are stored. You download the software from those repositories and *bam*, you are ready to go. 
+On Linux, the software usually is stored in repositories: think of it like big folders on the Internet in which all programs are stored. You download the software from those repositories and *bam*, you are ready to go.
 
-This means that most software installations on Linux are pretty much the same: 
+This means that most software installations on Linux are pretty much the same:
 
 ```cmd
 sudo apt get <name of the software>
@@ -54,7 +52,7 @@ Updates are done by the same way. **As you may expect**, this has drawbacks, lik
 
 Windows does not come with a native package manager, but there's a community solution that goes by the name `chocolatey` that fills this gap.
 
-Chocolatey's installation is done through **PowerShell** and is mostly automatic: 
+Chocolatey's installation is done through **PowerShell** and is mostly automatic:
 - Visit the [official site][chocolatey]
 - Go to **Start Menu** -> **Windows PowerShell** -> **Run as Admin**
 - Paste the command shown in the installation page and let it work
@@ -96,7 +94,7 @@ PS> pacman --version
 So, by now we got `choclatey` installed and we used it to install `msys2`. Now, what's `pacman` you may ask. No, it has nothing to do with *that* [Pac-Man][pacman-game].
 
 > The `pacman` package manager is one of the major distinguishing features of **Arch Linux**. It combines a simple binary package format with an easy-to-use build system. The goal of `pacman` is to make it possible to easily manage packages, whether they are from the official repositories or the user's own builds.
-> 
+>
 > &mdash; [Arch Linux Wiki][pacman-wiki]
 
 ### **Wait, wait, another package manager?!**
@@ -112,6 +110,7 @@ We'll use `pacman` in order to get a lot of really useful development tools like
 > If you don't know what those tools are, don't worry. You'll eventually find them in some **Stack Overflow** post that asks you to run some command.
 
 First of all, make sure `pacman` is up to date by running the following command:
+
 ```cmd
 pacman -Syuu
 ```
@@ -158,7 +157,7 @@ There is NO WARRANTY, to the extent permitted by law.
 
 > **GNU Make** is a tool which controls the generation of executables and other non-source files of a program from the program's source files.
 > Make gets its knowledge of how to build your program from a file called the `makefile`, which lists each of the non-source files and how to compute it from other files. When you write a program, you should write a `makefile` for it, so that it is possible to use Make to build and install the program.
-> 
+>
 > &mdash; [GNU Make][gnu-make]
 
 Make is one of the most popular *"build systems"* for **C**, and most projects written in **C** use it. The details of `make` are outside the scope of this post, but we'll install for future usage.
@@ -191,7 +190,7 @@ There are **a lot** of **C IDEs** for you to pick:
 
 ### But we're going bare metal...
 
-When starting with **C** &mdash; actually with **any** programming language &mdash; I don't recommend going with an **IDE** since those tools do a lot of stuff under the hood that you as a beginner may be missing, maybe don't understand or can't troubleshoot. 
+When starting with **C** &mdash; actually with **any** programming language &mdash; I don't recommend going with an **IDE** since those tools do a lot of stuff under the hood that you as a beginner may be missing, maybe don't understand or can't troubleshoot.
 > Understand the magic under the hood and then go with an IDE. Never the other way around. I've done that. Don't you do it too.
 
 Just use a **text editor**. I recommend [VS Code][vscode] since it's very popular, easy to use and very customizable. It supports a lot of programming languages and tools by installing [extensions][vscode-market], and there are a lot of those.
@@ -203,10 +202,11 @@ Just use a **text editor**. I recommend [VS Code][vscode] since it's very popula
 Create a empty folder, open it in **VS Code**, create a `main.c` file and write the usual **Hello, World!**. If you get an extension recommendation for `C/C++`, **install it**. It will provide useful stuff like error highlighting, function and names autocomplete, code snippets &mdash; function definitions, main function, etc. &mdash;
 
 If you want to run your code, on the integrated terminal run:
-```shell
-    PS> gcc main.c          # compile your files
-    PS> a.exe               # run the executable
-    Hello World!            # expected output
+
+```cmd
+PS> gcc main.c          # compile your files
+PS> a.exe               # run the executable
+Hello World!            # expected output
 ```
 
 **There you go!** Next time you want to compile and run **C**, you will only need to run `gcc` from the terminal with your `.c` file like we just did.
