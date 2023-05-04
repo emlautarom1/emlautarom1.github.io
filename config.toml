@@ -9,7 +9,6 @@ publishDir = "public"
   [[menu.main]]
     identifier = "about"
     name = "About"
-    title = "About Me"
     url = "/about/"
     weight = 0
 
