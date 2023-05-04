@@ -2,6 +2,7 @@
 title: "About Me"
 date: 2020-03-11T15:27:41-03:00
 draft: false
+unlisted: true
 ---
 
 ![profile picture](/images/me.jpg)
