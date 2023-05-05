@@ -50,7 +50,7 @@ Remember to download the default `config.plist` for Ryzen (17h) from [here](http
 
 - **Clover**: Downgrade your Clover version to [r5092](https://cdn.discordapp.com/attachments/263757191608139779/636426276684562449/Clover_r5092.zip) since it has compatibility issues with `SmallTreeIntel82576`. Just replace the files inside your PenDrive and overwrite if asked to.
 
-### Installing Mac OS
+## Installing Mac OS
 
 Now you can install Mac OS following the Vanilla guide. Once you finished and you are inside the OS, keep in mind the following:
 
