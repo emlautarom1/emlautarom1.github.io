@@ -10,3 +10,25 @@
   display: none;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+table td,
+table th {
+  padding: 8px 4px;
+}
+
+table tr:nth-child(even) {
+  background-color: var(--grey-3);
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: start;
+  background-color: var(--blue);
+  color: white;
+}
