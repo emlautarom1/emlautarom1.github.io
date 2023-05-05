@@ -26,3 +26,7 @@ During my studies at [San Luis National University](http://www.unsl.edu.ar/)  I 
 - LinkedIn: https://www.linkedin.com/in/lautaro-martin-emanuel/
 - GitHub: https://github.com/emlautarom1
 - Upwork: https://www.upwork.com/freelancers/lautaroemanuel
+
+## Resume
+
+My resume is available to be downloaded in PDF format by [clicking here.](https://docs.google.com/document/d/13RWwy4Q4jr85SH-EqhPKaFNrS8LU1xjUZ3loV13ATjQ/export?format=pdf)
