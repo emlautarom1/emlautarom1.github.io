@@ -17,7 +17,7 @@ During my studies at [San Luis National University](http://www.unsl.edu.ar/)  I 
 - [VidGif](https://play.google.com/store/apps/details?id=com.migamake.vidgif): Record, edit and share the last 30 seconds of any game or application.
 - [Proyecto Paraísos](https://github.com/emlautarom1/ProyectoParaisos): Track sick trees, aggregate observation records and access a wiki, all in a single PWA.
 - [Chip 8 Emulator](https://github.com/emlautarom1/Chip_8): Chip 8 Virtual Machine implemented in Rust.
-- [Information Theory](https://github.com/emlautarom1/InformationTheory): Compress and protect data with Hamming and Huffman algorithms.
+- [Information Theory](https://github.com/emlautarom1/InformationTheory): Compress and protect data with Huffman and Hamming algorithms.
 - [pdp11.jl](https://github.com/emlautarom1/pdp11.jl): PDP-11 simulator written in Julia, ala QEMU.
 - [Billy](https://github.com/emlautarom1/Billy): Split bills fairly among friends.
 
