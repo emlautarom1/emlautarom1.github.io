@@ -1,4 +1,4 @@
-.highlight > :first-child {
+.highlight> :first-child {
   padding: 1rem 0.5rem;
 }
 
@@ -10,10 +10,16 @@
   display: none;
 }
 
+.table-wrapper {
+  width: 100%;
+  overflow-x: scroll;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
   margin: 1rem 0;
+  white-space: nowrap;
 }
 
 table td,
