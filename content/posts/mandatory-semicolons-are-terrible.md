@@ -1,7 +1,7 @@
 ---
-title: "Mandatory Semicolons Are Terrible"
+title: "Mandatory semicolons are terrible"
 date: 2023-05-11T18:24:51-03:00
-summary: A rant on why I think semicolons (;) are terrible for programming
+summary: A rant on why I think semicolons are a terrible default programming languages
 draft: false
 ---
 
