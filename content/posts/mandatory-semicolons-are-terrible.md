@@ -2,7 +2,7 @@
 title: "Mandatory Semicolons Are Terrible"
 date: 2023-05-11T18:24:51-03:00
 summary: A rant on why I think semicolons (;) are terrible for programming
-draft: true
+draft: false
 ---
 
 ## Introduction
