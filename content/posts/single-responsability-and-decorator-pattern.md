@@ -72,7 +72,7 @@ Since the token needed to be used multiple times in a very short span of time, m
 
 ## The wrong fix: Modify the code
 
-My initial thought was to change the code on `JwtAuth` removing the `Lazy` and instead manually controlling when to produce a new token and when to use a previously computed value. After writing the required code I realized that this was **a bad idea** since now the class now had two responsibilities: handling the token generation and also dealing with caching and expirations.
+My initial thought was to change the code on `JwtAuth` removing the `Lazy` and instead manually controlling when to produce a new token and when to use a previously computed value. After writing the required code I realized that this was **a bad idea** since now the class now had two responsibilities: handling the token generation and also dealing with caching and expiration.
 
 - If the logic for generating the token were to change, we would need to change `JwtAuth` again.
 - If the timeout logic were to change, we would need to change `JwtAuth` again.
@@ -173,7 +173,7 @@ The delegation here is the interesting part: based on the elapsed time since the
 
 The underlying `IAuth` could be anything, from the initial fixed implementation, to the `JwtAuth` we discussed before. But it's important to note that now the logic for caching and expiration is fully self contained on a single class, `TtlAuth`.
 
-Then, in our DI container we can replace which instance we're using for the `IAuth` interface without any dependant code even noticing the change. That is, we go from this:
+Then, in our DI container we can replace which instance we're using for the `IAuth` interface without any dependent code even noticing the change. That is, we go from this:
 
 ```C#
 collection.AddSingleton<IAuth>(provider =>
@@ -201,8 +201,8 @@ collection.AddSingleton<IAuth>(provider =>
 
 ## Conclusions
 
-- Whenever you write a piece of code, write the minimum amount of code that gets the feature working. In this case, I should not have added an initial `Lazy` trying to optimize something that I didn't even measure. *Note that if a new token was generated for each request, then the issue with expirations would not have existed on the first place.*
+- Whenever you write a piece of code, write the minimum amount of code that gets the feature working. In this case, I should not have added an initial `Lazy` trying to optimize something that I didn't even measure. *Note that if a new token was generated for each request, then the issue with expiration would not have existed on the first place.*
 
-- If you need to extend the code to add new functionality, do not attemp to modify it immediately: try to use a decorator to extend the behavior of the existing code instead. A lot of the times this is actually the case since we need to do something either before or after what the original code was intended to do.
+- If you need to extend the code to add new functionality, do not attempt to modify it immediately: try to use a decorator to extend the behavior of the existing code instead. A lot of the times this is actually the case since we need to do something either before or after what the original code was intended to do.
 
 - Code that uses interfaces is easier to test, change and extend: we can create test specific implementations, we can change the implementation without users noticing, and we can add new behavior as long as we don't break the contract established.
