@@ -11,7 +11,7 @@ Not long ago I was working on a piece of code that had to perform a series of HT
 
 On a first design, I decided to create an interface for the `AuthToken` generation. This would allow me to have at least two instances: one would actually generate a valid JWT from a user-provided secret, and the other would return, for example, a fixed token, which is very useful during testing:
 
-```C#
+```C#{linenos=true}
 interface IAuth
 {
     string AuthToken { get; }
@@ -20,7 +20,7 @@ interface IAuth
 
 As you can see, the interface is very minimal with only one method. We fix the type of the token to a `string` since it's good enough for our needs; no need to parametrize in this scenario. For the implementations then we have:
 
-```C#
+```C#{linenos=true}
 class FixedAuth : IAuth
 {
     public string AuthToken { get; }
@@ -32,7 +32,7 @@ class FixedAuth : IAuth
 }
 ```
 
-```C#
+```C#{linenos=true}
 class JwtAuth : IAuth
 {
     private readonly ISystemClock _clock;
@@ -87,7 +87,7 @@ In particular, my first mistake was to add the caching behavior through `Lazy` t
 
 After realizing the problem, I removed all usages of `Lazy` from the `JwtAuth` class, which resulted in the following code:
 
-```C#
+```C#{linenos=true}
 class JwtAuth : IAuth
 {
     private readonly ISystemClock _clock;
@@ -119,7 +119,7 @@ class JwtAuth : IAuth
 
 Now, whenever we use `JwtAuth::AuthToken` we're actually generating a new token through `JwtAuth::GenerateAuthToken`. To get the desired functionality (caching with expiration), I created a new class:
 
-```C#
+```C#{linenos=true}
 class TtlAuth : IAuth
 {
     private readonly IAuth _auth;
@@ -165,7 +165,7 @@ The class `TtlAuth` implements the interface `IAuth`,
 ```C#
 private readonly IAuth _auth;
 
-public TtlAuth(IAuth auth, ISystemClock clock, int ttl) { /* ... */ }
+public TtlAuth(IAuth auth, ISystemClock clock, int ttl)
 ```
 it also has an internal `IAuth` instance.
 
