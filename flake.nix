@@ -1,7 +1,7 @@
 {
   inputs = {
     utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "github:NixOS/nixpkgs/2d31b9476b7c6f5b029e595586b0b112a7ad130b";
+    nixpkgs.url = "github:NixOS/nixpkgs/3007746b3f5bfcb49e102b517bca891822a41b31";
   };
   outputs = { self, nixpkgs, utils }: utils.lib.eachDefaultSystem (system:
     let
