@@ -120,7 +120,6 @@ Some readers might quickly point out that `Eff es a = ReaderT es (IO a)`, and th
 
 `Eff` is a Monad, thus we define:
 
-
 ```haskell
 instance Functor (Eff es) where
   fmap f (MkEff ea) = MkEff $ \env -> do
