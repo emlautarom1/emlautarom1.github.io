@@ -12,13 +12,13 @@ During my studies at [San Luis National University](http://www.unsl.edu.ar/)  I 
 
 ## Projects I've worked on
 
-- [Axo](https://www.axo.trade/): An Order Book based Cardano DEX.
-- [Duckling](https://github.com/facebook/duckling): Language, engine, and tooling for expressing, testing, and evaluating composable language rules on input strings.
-- [VidGif](https://play.google.com/store/apps/details?id=com.migamake.vidgif): Record, edit and share the last 30 seconds of any game or application.
+- [Axo](https://x.com/axotrade): Formerly Maladex, an Order Book based Cardano DEX.
+- [Duckling](https://github.com/facebook/duckling): Language, engine, and tooling for expressing, testing, and evaluating composable language rules on input strings. Used extensively by [Parloa](https://www.parloa.com/)
+- [VidGif](https://www.migamake.com/projects/vidgif): Record, edit and share the last 30 seconds of any game or application.
 - [Proyecto Paraísos](https://github.com/emlautarom1/ProyectoParaisos): Track sick trees, aggregate observation records and access a wiki, all in a single PWA.
 - [Chip 8 Emulator](https://github.com/emlautarom1/Chip_8): Chip 8 Virtual Machine implemented in Rust.
-- [Information Theory](https://github.com/emlautarom1/InformationTheory): Compress and protect data with Huffman and Hamming algorithms.
 - [pdp11.jl](https://github.com/emlautarom1/pdp11.jl): PDP-11 simulator written in Julia, ala QEMU.
+- [Information Theory](https://github.com/emlautarom1/InformationTheory): Compress and protect data with Huffman and Hamming algorithms.
 - [Billy](https://github.com/emlautarom1/Billy): Split bills fairly among friends.
 
 ## Relevant links
