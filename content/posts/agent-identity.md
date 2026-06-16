@@ -2,7 +2,7 @@
 title: "Isolated agent identities for Git and GitHub"
 date: 2026-06-16T12:14:12-03:00
 summary: A quick guide on how to separate your agent's credentials from your personal ones
-draft: true
+draft: false
 ---
 
 With the rise of agent-first software development, it’s necessary to be able to split the credentials and permissions used by real engineers from agents. The following guide provides one of many solutions to this problem specifically for GitHub by leveraging [GitHub Apps](https://docs.github.com/en/apps/overview). It’s expected that forges like GitHub and GitLab will implement a first-class solution eventually, but for now this should do. We'll also set up our agents to have separate Git credentials so that commits are attributed correctly.
